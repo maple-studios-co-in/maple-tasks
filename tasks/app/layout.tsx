@@ -33,6 +33,7 @@ export default async function RootLayout({ children }: { children: React.ReactNo
           user={
             user ?? {
               id: "local-dev",
+              tenantId: "local-dev",
               name: "Local Developer",
               email: "local@maple.dev",
               role: "admin",
