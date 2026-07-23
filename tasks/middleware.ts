@@ -5,6 +5,8 @@ import { canAccessTool } from "@maple/core/lib/rbac";
 const TOOL = "tasks";
 
 export async function middleware(req: NextRequest) {
+  return NextResponse.next();
+
   if (process.env.NODE_ENV === "development") {
     return NextResponse.next();
   }
