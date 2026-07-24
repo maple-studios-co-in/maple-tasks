@@ -268,6 +268,7 @@ model Task {
   description String?
   status      String    @default("todo")     // todo | in_progress | blocked | done
   priority    String    @default("medium")   // low | medium | high
+  order       Int       @default(0)
   assigneeId  String?
   assignee    User?     @relation(fields: [assigneeId], references: [id])
   dueDate     DateTime?

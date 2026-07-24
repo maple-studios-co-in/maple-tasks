@@ -6,6 +6,7 @@ export async function PATCH(req: Request, { params }: { params: Promise<{ id: st
   if (!(await (await tenantDb()).task.findFirst({ where: { id } }))) return NextResponse.json({ error: "Not found in tenant" }, { status: 404 }); const b = await req.json();
   const data: Record<string, unknown> = {};
   for (const k of ["title", "description", "status", "priority", "assigneeId"]) if (b[k] !== undefined) data[k] = b[k] || null;
+  if (b.order !== undefined) data.order = Number(b.order);
   if (b.dueDate !== undefined) data.dueDate = b.dueDate ? new Date(b.dueDate) : null;
   return NextResponse.json(await (await tenantDb()).task.update({ where: { id }, data }));
 }
